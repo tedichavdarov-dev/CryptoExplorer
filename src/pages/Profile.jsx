@@ -51,7 +51,7 @@ const Profile = () => {
       </div>
 
       <div className="profile-status">
-        <p className="status-online">Trading Status: Active ✅</p>
+        <p className="status-online">Trading Status: Active</p>
       </div>
     </div>
   );

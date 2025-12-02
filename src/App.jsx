@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar.jsx";
 
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import CryptoDetail from "./pages/CryptoDetails/CryptoDetail.jsx";
 import Profile from "./pages/Profile";
-import Contact from "./pages/Contact";
-import About from "./pages/About";
+import Contact from "./pages/Contact/Contact";
+import About from "./pages/About/About";
 
 function App() {
   return (

@@ -1,16 +1,33 @@
-# React + Vite
+# CryptoExplorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicación web para explorar criptomonedas en tiempo real. Consulta precios, estadísticas y detalles de las principales criptomonedas del mercado.
 
-Currently, two official plugins are available:
+## Instalación
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Clonar el repositorio
+2. Instalar dependencias:
+```bash
+npm install
+```
 
-## React Compiler
+3. Ejecutar en modo desarrollo:
+```bash
+npm run dev
+```
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+- React + Vite
+- React Router DOM
+- Axios
+- Bootstrap
+- CoinPaprika API
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Estructura
+
+El proyecto incluye las siguientes páginas:
+- Listado de criptomonedas
+- Detalle de cada criptomoneda
+- Perfil de usuario
+- Formulario de contacto
+- Información sobre el proyecto
