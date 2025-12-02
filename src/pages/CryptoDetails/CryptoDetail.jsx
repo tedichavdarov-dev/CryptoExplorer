@@ -7,20 +7,7 @@ const CryptoDetail = () => {
   const { id } = useParams();
   const [crypto, setCrypto] = useState(null);
   const [loading, setLoading] = useState(true);
-  const glowStyle =
-    crypto && crypto.quotes && crypto.quotes.USD
-      ? crypto.quotes.USD.percent_change_24h >= 0
-        ? {
-            transform: "scale(1.02)",
-            border: "1px solid rgba(0, 255, 76, 1)",
-            boxShadow: "0 0 20px rgba(9, 255, 0, 1), 0 0 40px rgba(0, 255, 21, 1) inset",
-          }
-        : {
-            transform: "scale(1.02)",
-            border: "1px solid rgba(255, 0, 0, 1)",
-            boxShadow: "0 0 20px rgba(255, 0, 0, 1), 0 0 40px rgba(255, 0, 0, 1) inset",
-          }
-      : {};
+
   useEffect(() => {
     const getCryptoDetail = async (id) => {
       try {
@@ -36,30 +23,98 @@ const CryptoDetail = () => {
     getCryptoDetail(id);
   }, [id]);
 
-  return (
-    <div className="mt-5">
-      {loading ? (
-        <p>Cargando...</p>
-      ) : crypto ? (
-          <div
-            className="mx-5 my-5 p-4  mb-4 cursor-pointer hover:scale-105 transition-transform"
-            style={glowStyle}
-          >
-          <Link to="/" className="mb-4 btn btn-success mt-3">Volver al listado</Link>
-          <h1>{crypto.name} ({crypto.symbol})</h1>
-          <p>Precio: ${crypto.quotes.USD.price.toFixed(2)}</p>
-          <p>Cambio 24h: {crypto.quotes.USD.percent_change_24h}%</p>
-          <p>Capitalización de mercado: ${crypto.quotes.USD.market_cap.toLocaleString()}</p>
-          <p>Volumen 24h: ${crypto.quotes.USD.volume_24h.toLocaleString()}</p>
-          <p>Total supply: {crypto.total_supply ? crypto.total_supply.toLocaleString() : 'No disponible'}</p>
-          <p>Max supply: {crypto.max_supply ? crypto.max_supply.toLocaleString() : 'No disponible'}</p>
-          <p>Beta value: {crypto.beta_value ? crypto.beta_value.toFixed(2) : 'No disponible'}</p>
-          <p>first data at: {crypto.first_data_at ? new Date(crypto.first_data_at).toLocaleDateString() : 'No disponible'}</p>
-          <p>last updated at: {crypto.last_updated ? new Date(crypto.last_updated).toLocaleDateString() : 'No disponible'}</p>
+  if (loading) {
+    return (
+      <div className="detail-container">
+        <div className="loading-container">
+          <div className="loading-spinner"></div>
+          <p className="loading-text">Loading crypto data...</p>
         </div>
-      ) : (
-        <p>Criptomoneda no encontrada.</p>
-      )}
+      </div>
+    );
+  }
+
+  if (!crypto) {
+    return (
+      <div className="detail-container">
+        <p className="error-text">Criptomoneda no encontrada.</p>
+      </div>
+    );
+  }
+
+  const isPositive = crypto.quotes.USD.percent_change_24h >= 0;
+
+  return (
+    <div className="detail-container">
+      <Link to="/" className="back-button">
+        ← Volver al listado
+      </Link>
+
+      <div className={`detail-card ${isPositive ? 'positive' : 'negative'}`}>
+        <div className="detail-header">
+          <div>
+            <h1 className="detail-title">{crypto.name}</h1>
+            <span className="detail-symbol">{crypto.symbol}</span>
+          </div>
+          <span className={`change-badge ${isPositive ? 'positive' : 'negative'}`}>
+            {isPositive ? "▲" : "▼"}
+            {isPositive ? "+" : ""}
+            {crypto.quotes.USD.percent_change_24h.toFixed(2)}%
+          </span>
+        </div>
+
+        <div className="detail-price-section">
+          <div className="price-label">Current Price</div>
+          <div className="price-value">${crypto.quotes.USD.price.toFixed(2)}</div>
+        </div>
+
+        <div className="detail-stats-grid">
+          <div className="stat-card">
+            <div className="stat-label">Market Cap</div>
+            <div className="stat-value">${crypto.quotes.USD.market_cap.toLocaleString()}</div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">Volume 24h</div>
+            <div className="stat-value">${crypto.quotes.USD.volume_24h.toLocaleString()}</div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">Total Supply</div>
+            <div className="stat-value">
+              {crypto.total_supply ? crypto.total_supply.toLocaleString() : 'N/A'}
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">Max Supply</div>
+            <div className="stat-value">
+              {crypto.max_supply ? crypto.max_supply.toLocaleString() : 'N/A'}
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">Beta Value</div>
+            <div className="stat-value">
+              {crypto.beta_value ? crypto.beta_value.toFixed(2) : 'N/A'}
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">First Data</div>
+            <div className="stat-value">
+              {crypto.first_data_at ? new Date(crypto.first_data_at).toLocaleDateString() : 'N/A'}
+            </div>
+          </div>
+
+          <div className="stat-card">
+            <div className="stat-label">Last Updated</div>
+            <div className="stat-value">
+              {crypto.last_updated ? new Date(crypto.last_updated).toLocaleDateString() : 'N/A'}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,212 @@
-/* Estilo del contenedor principal */
-.mt-5 > div {
-  background-color: rgba(0, 0, 0, 0.7);
-
-  border-radius: 12px;
-  padding: 25px;
-  transition: transform 0.3s, box-shadow 0.3s;
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
-.btn-success:hover {
-  background-color: #0ff;
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 20px;
+}
+
+.loading-spinner {
+  width: 60px;
+  height: 60px;
+  border: 4px solid rgba(0, 255, 204, 0.1);
+  border-top: 4px solid #00ffcc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  margin-top: 20px;
+  color: #00ffcc;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.error-text {
+  text-align: center;
+  color: #ff3232;
+  font-size: 1.2rem;
+  padding: 60px 20px;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(0, 255, 204, 0.1);
+  color: #00ffcc;
+  text-decoration: none;
+  border: 1px solid #00ffcc;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.back-button:hover {
+  background: #00ffcc;
   color: #000;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #0ff inset;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  transform: translateX(-5px);
+}
+
+.detail-card {
+  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  transition: all 0.3s ease;
+}
+
+.detail-card.positive {
+  box-shadow: 0 8px 32px rgba(0, 255, 76, 0.2);
+}
+
+.detail-card.negative {
+  box-shadow: 0 8px 32px rgba(255, 50, 50, 0.2);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.2);
+}
+
+.detail-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #00ffcc;
+  margin: 0 0 10px 0;
+  text-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+}
+
+.detail-symbol {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.change-badge {
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  border-radius: 10px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.change-badge.positive {
+  color: #00ff4c;
+  background: rgba(0, 255, 76, 0.1);
+  border: 1px solid rgba(0, 255, 76, 0.3);
+}
+
+.change-badge.negative {
+  color: #ff3232;
+  background: rgba(255, 50, 50, 0.1);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+}
+
+.detail-price-section {
+  text-align: center;
+  padding: 40px 0;
+  margin-bottom: 40px;
+  background: rgba(0, 255, 204, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 255, 204, 0.1);
+}
+
+.price-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.price-value {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.detail-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(0, 255, 204, 0.03);
+  border: 1px solid rgba(0, 255, 204, 0.1);
+  border-radius: 10px;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(0, 255, 204, 0.08);
+  border-color: rgba(0, 255, 204, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(0, 255, 204, 0.2);
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00ffcc;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+@media (max-width: 768px) {
+  .detail-card {
+    padding: 20px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .detail-title {
+    font-size: 1.8rem;
+  }
+
+  .price-value {
+    font-size: 2.5rem;
+  }
+
+  .detail-stats-grid {
+    grid-template-columns: 1fr;
+  }
 }

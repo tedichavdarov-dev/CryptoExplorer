@@ -1,27 +1,59 @@
 /* Navbar futurista fijo arriba */
 .navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 10, 10, 0.95) !important;
+  backdrop-filter: blur(10px);
   border-bottom: 2px solid #00ffcc;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.3), 0 4px 30px rgba(0, 0, 0, 0.5);
   font-family: 'Orbitron', sans-serif;
   overflow: hidden;
 }
 
-
 /* Marca y links */
 .navbar-brand {
   color: #00ffcc;
-  font-weight: bold;
+  font-weight: 900;
   font-size: 1.8rem;
   text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
-  transition: 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  letter-spacing: 2px;
 }
 
 .navbar-brand:hover {
+  color: #00ffcc;
   transform: scale(1.05);
-  text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+  text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc, 0 0 60px #00ffcc;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.5rem 1rem !important;
+}
+
+.nav-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffcc, #00ff88);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00ffcc !important;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+}
+
+.nav-link:hover::before {
+  width: 80%;
 }
 

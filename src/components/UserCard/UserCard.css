@@ -1,0 +1,144 @@
+.crypto-card {
+  position: relative;
+  background: rgba(15, 15, 30, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 204, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.crypto-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 255, 204, 0.1),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.crypto-card:hover::before {
+  left: 100%;
+}
+
+.crypto-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 255, 204, 0.5);
+}
+
+.crypto-card.positive:hover {
+  box-shadow: 0 8px 32px rgba(0, 255, 76, 0.3), 0 0 40px rgba(0, 255, 76, 0.1) inset;
+}
+
+.crypto-card.negative:hover {
+  box-shadow: 0 8px 32px rgba(255, 50, 50, 0.3), 0 0 40px rgba(255, 50, 50, 0.1) inset;
+}
+
+.crypto-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 255, 204, 0.1);
+}
+
+.crypto-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #00ffcc;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+}
+
+.crypto-symbol {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.crypto-card-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crypto-price {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.price-label {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.crypto-change {
+  display: flex;
+  align-items: center;
+}
+
+.change-badge {
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.change-badge.positive {
+  color: #00ff4c;
+  background: rgba(0, 255, 76, 0.1);
+  border: 1px solid rgba(0, 255, 76, 0.3);
+}
+
+.change-badge.negative {
+  color: #ff3232;
+  background: rgba(255, 50, 50, 0.1);
+  border: 1px solid rgba(255, 50, 50, 0.3);
+}
+
+.crypto-card-glow {
+  position: absolute;
+  bottom: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.crypto-card.positive .crypto-card-glow {
+  background: radial-gradient(circle, rgba(0, 255, 76, 0.2) 0%, transparent 70%);
+}
+
+.crypto-card.negative .crypto-card-glow {
+  background: radial-gradient(circle, rgba(255, 50, 50, 0.2) 0%, transparent 70%);
+}
+
+.crypto-card:hover .crypto-card-glow {
+  opacity: 1;
+}
